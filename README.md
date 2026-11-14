@@ -13,7 +13,7 @@ The cleaning pipeline processes 10,000 raw transactional records through strict 
 * **Ingestion & Audit:** Loaded raw POS data and inspected structural integrity, missing values, and statistical distributions (`df.info()`, `df.describe()`).
 * **Noise Elimination:** Used regular expressions to hunt down and isolate corrupted tracking artifacts, system logs, and placeholder strings (`ERROR`, `UNKNOWN`), converting them into clean null values (`np.nan`).
 * **Safe Type Casting:** Enforced robust numerical parsing on financial fields (`Price Per Unit`, `Total Spent`) via error-coercion (`pd.to_numeric(errors='coerce')`) and standardized transaction timestamps.
-* 🔥 **The "No-Imputation" Principle :** Rows with missing values (`NaN`) or purged anomalies were **intentionally left blank**. *Why? Because in financial and business data analytics, artificially guessing, estimating, or filling missing values with mean/median or fake placeholders introduces synthetic bias. Preserving natural gaps protects the authentic integrity of the data and honors real-world auditing standards—we don't fake numbers!* 🛡️
+* 🔥 **The "No-Imputation" Principle (Better missing than fabricated!):** Rows with missing values (`NaN`) or purged anomalies were **intentionally left blank**. *Why? Because in business and financial data analytics, guessing or faking missing numbers introduces synthetic bias. We preserve natural gaps to protect real-world auditing standards and empirical truth—no fake numbers allowed!* 🛡️
 * **Export & Persistence:** Compiled and exported the sanitized dataset into structured formats (`.xlsx` / CSV) via Google Drive integration.
 
 ## Tech Stack 💻
